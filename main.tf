@@ -20,7 +20,7 @@ resource "aws_eip" "web" {
 
 resource "aws_instance" "web-prod" {
   ami                    = data.aws_ami.latest_amazon_linux.id
-  instance_type          = "t3.micro"
+  instance_type          = var.server_size
   vpc_security_group_ids = [aws_security_group.web-prod.id]
   user_data              = <<EOF
 #!/bin/bash
